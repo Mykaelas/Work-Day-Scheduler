@@ -38,8 +38,8 @@ textarea{
 }
 
 .hour {
-  background-color: black;
-  color: white;
+  background-color: white;
+  color: black;
   border-top: 1px dashed #000000;
 }
 
@@ -84,12 +84,7 @@ textarea{
   font-size:35px;
   box-shadow: 0 4px 6px rgba(0,0,0,0.2);
 }
-/* 
-#timeblock {
-  background-color: yellow;
-  font-size: 25px;
-  padding: 10px 20px 10px 10px;
-} */
+
 .display-3 {
   background-color: black;
   color: white;
