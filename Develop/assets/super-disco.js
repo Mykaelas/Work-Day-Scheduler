@@ -12,6 +12,8 @@
 // WHEN I refresh the page
 // THEN the saved events persist
 
+
+
 // Today's current day is displayed at the top of the daily planner.
 var date = new Date();
     // displays the current day in the calendar
@@ -34,5 +36,57 @@ function currentTime() {
     let t = setTimeout(function(){ currentTime() }, 1000); 
   
   }
-  
   currentTime();
+
+  
+
+// Saving the text to the local storage area. 
+$("#nine .blank").val(localStorage.getItem("nine"));
+$("#ten .blank").val(localStorage.getItem("ten"));
+$("#eleven .blank").val(localStorage.getItem("eleven"));
+$("#twelve .blank").val(localStorage.getItem("twelve"));
+$("#thirteen .blank").val(localStorage.getItem("thirteen"));
+$("#fourteen .blank").val(localStorage.getItem("fourteen"));
+$("#fifteen .blank").val(localStorage.getItem("fifteen"));
+$("#sixteen .blank").val(localStorage.getItem("sixteen"));
+$("#seventeen .blank").val(localStorage.getItem("seventeen"));
+
+// // save item by clicking the save button 
+$(".saveBtn").on("click", function () {
+    //get nearby values.
+    console.log("button clicked");
+    var text = $(this).siblings(".blank").val();
+    var time = $(this).parent().parent().attr("id"); 
+
+    //set items in local storage.
+    localStorage.setItem(time, text);
+});
+
+
+// This function is used to see what color the time blocks will be depending on the current time.
+ function presentTime() {
+ 
+    var timeTracker = moment().hour(); 
+
+    $(".hours").each(function () {
+        var currentHour = parseInt($(this).attr("id").split("hour")[1]);
+        console.log( currentHour, timeTracker)
+
+        if (currentHour < timeTracker) {
+            $(this).addClass("past");
+            $(this).removeClass("future");
+            $(this).removeClass("present");
+        }
+        else if (currentHour === timeTracker) {
+            $(this).removeClass("past");
+            $(this).addClass("present");
+            $(this).removeClass("future");
+        }
+        else {
+            $(this).removeClass("present");
+            $(this).removeClass("past");
+            $(this).addClass("future");
+        }
+    })
+ }
+presentTime(); 
